@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="header">
+        <nav id="header_navbar">
+            <ul id="header_navbar_menu">
+                <li><a href="#about" class="menu-item" target="_blank">ABOUT ME</a></li>
+                <li><a href="#certificates" class="menu-item" target="_blank">SERTIFICATES</a></li>
+                <li><a href="#projects" class="menu-item" target="_blank">PROJECTS</a></li>
+                <li><a href="#contacts" class="menu-item" target="_blank">CONTACTS</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section id="about">
+      <div class="about">
+        <div class="about_img">
+          <img src="assets/ya.png" alt="girl" width="400px"> 
+        </div>
+        <div class="about_text"> 
+          <h1 class="about_me">LOUISA</h1>
+          <p>Hello! My name is Louisa and I'm a frontend developer! This is my business card site.
+            <br>  I create a morden beautiful and user-friendly websites.<br>  I have acquired skills of working with HTML5 / CSS3 / JAVASCRIPT / BOOSTRAP5 / FIGMA / GSAP and WORDPRESS. 
+            <br> I am constantly learning and developing my skills. <br>  At the moment I am mastering REACT, Redux.
+            <br>Examples of my work can be found below. 
+          </p>
+        </div>
+      </div>
+    </section>
+
+  
+  <section id="certificates">
+      <div class="certificates">
+          <h3 class="cert_heading">My sertificates</h3>
+          <h1 class="cert_heading">My certificates will be uploaded here...</h1>
+          <div class="cert_imgs">
+              <img class="cert" data-aos="fade-right" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000" src="assets/_HTML_CSS.png" alt="html_css">
+              <img class="cert" data-aos="fade-left" data-aos-easing="ease-out-cubic"
+              data-aos-duration="2000" src="assets/_Bootstrap.png" alt="Figma">
+              <img class="cert" data-aos="fade-right" data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000" src="assets/_JS.png" alt="js">
+          </div>
+      </div>
+  </section>
+
+
+  <section id="projects">
+    <div class="project_heading">
+      <h3>Projects</h3>
+    </div>
+    <div class="project-content">
+      <div class="project-content_cub" 
+      data-aos="flip-left"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="2000">
+        <img class="proj" src="assets/todo.png" alt="project" width="400px"/>
+        <h3 class="proj"> <a
+          href="todo/Index.html"
+          target="_blank">ToDo</a></h3>
+        <p class="proj">Stack: HTML/CSS/JavaScript</p>
+      </div>
+
+    <div class="project-content">
+      <div class="project-content_cub"
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000">
+        <img class="proj" src="assets/Weather.png" alt="project" />
+        <h3 class="proj"> <a
+          href="weather/Index.html"
+          target="_blank">Wheather App</a></h3>
+        <p class="proj">Stack: HTML/CSS/JavaScript</p>
+      </div>
+    
+      <div class="project-content_cub"
+        data-aos="flip-right"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000">
+        <img class="proj" src="assets/media.png" alt="project" />
+        <h3 class="proj"> <a
+          href="media/Index.html"
+          target="_blank">Media</a></h3>
+        <p class="proj">Stack: HTML/CSS/JavaScript</p>
+      </div>
+    </div>
+    
+    <div class="project-content">
+      <div class="project-content_cub"
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000">
+        <img class="proj" src="assets/Search book.png" alt="project" />
+        <h3 class="proj"> <a
+          href="search book/Index.html"
+          target="_blank">Search book App</a></h3>
+        <p class="proj">Stack: HTML/CSS/JavaScript</p>
+      </div>
+    
+    </div>
+    </section>
+
+
+    <section id="contacts">
+      <div class="contacts">
+        <div class="container">
+          <div class="contacts-body">
+            <div class="block-form">
+              <div class="box-header-contact">
+                <h3 class="contact_heading">Contact me</h3>
+                <p class="heading-par">
+                  Ask me a question.
+                </p>
+              </div>
+              <form action="https://formspree.io/f/xbjvldry" method="POST">
+                <input type="hidden" name="_language" value="en" />
+                <div class="form-control">
+                  <input type="text" name="name" required />
+                  <label>Name</label>
+                </div>
+                <div class="form-control">
+                  <input type="email" name="email" required />
+                  <label>Email</label>
+                </div>
+                <div class="form-control">
+                  <input type="text" name="message" required />
+                  <label>Message</label>
+                </div>
+                <div class="btn-contact">
+                  <button class="btn-send-message" type="submit">
+                    SEND MESSAGE
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-icons">
+            <a href="https://telegram.me/Louiset/" target="_blank">
+              <img src="assets/telegram.svg" alt="telegram" />
+            </a>
+            <a href="https://github.com/8Lou" target="_blank">
+              <img src="assets/github.svg" alt="github" />
+            </a>
+            
+          </div>
+          <div>
+            <p>© Louisa</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+    <div id="particles-js">
+        <canvas class="particles-js-canvas-el" width="375" height="667" style="width: 100%; height: 100%;"></canvas>
+    </div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/TextPlugin.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
