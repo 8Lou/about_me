@@ -51,8 +51,8 @@ function initGallery(sliderId) {
     goToSlide(prev);
   }
 
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); nextSlide(); });
+  if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); prevSlide(); });
 
   // Клавиатурная навигация
   slider.addEventListener('keydown', (e) => {
@@ -66,6 +66,86 @@ function initGallery(sliderId) {
 initGallery('gallery-weproperty');
 initGallery('gallery-10x');
 initGallery('gallery-monarch');
+
+// Lightbox — увеличение фото при клике
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+let lightboxSlider = null; // текущий слайдер, из которого открыт lightbox
+
+// Открытие lightbox по клику на активный (видимый) слайд
+// Используем делегирование на всех .gallery-track
+document.querySelectorAll('.gallery-track').forEach(track => {
+  track.addEventListener('click', function(e) {
+    const slide = e.target.closest('.gallery-slide');
+    if (!slide || !slide.classList.contains('active')) return;
+    e.stopPropagation();
+    lightboxSlider = slide.closest('.gallery-slider');
+    lightboxImg.src = slide.src;
+    lightbox.classList.add('active');
+  });
+});
+
+
+
+// Навигация внутри lightbox
+function lightboxNavigate(direction) {
+  if (!lightboxSlider) return;
+  const slides = lightboxSlider.querySelectorAll('.gallery-slide');
+  const currentActive = lightboxSlider.querySelector('.gallery-slide.active');
+  let currentIndex = Array.from(slides).indexOf(currentActive);
+  let newIndex;
+  if (direction === 'next') {
+    newIndex = (currentIndex + 1) % slides.length;
+  } else {
+    newIndex = (currentIndex - 1 + slides.length) % slides.length;
+  }
+  // Переключаем слайд в галерее
+  slides.forEach(s => s.classList.remove('active'));
+  slides[newIndex].classList.add('active');
+  // Обновляем dots
+  const dots = lightboxSlider.querySelectorAll('.gallery-dots span');
+  if (dots.length) {
+    dots.forEach(d => d.classList.remove('active'));
+    dots[newIndex].classList.add('active');
+  }
+  // Обновляем lightbox
+  lightboxImg.src = slides[newIndex].src;
+}
+
+// Навигация по кнопкам в lightbox
+document.getElementById('lightboxPrev').addEventListener('click', function(e) {
+  e.stopPropagation();
+  lightboxNavigate('prev');
+});
+document.getElementById('lightboxNext').addEventListener('click', function(e) {
+  e.stopPropagation();
+  lightboxNavigate('next');
+});
+
+// Закрытие lightbox по клику на overlay (но не по клику на само изображение или кнопки)
+lightbox.addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.classList.remove('active');
+    lightboxSlider = null;
+  }
+});
+
+
+// Закрытие по Escape
+document.addEventListener('keydown', function(e) {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('active');
+    lightboxSlider = null;
+  }
+  if (e.key === 'ArrowRight') {
+    lightboxNavigate('next');
+  }
+  if (e.key === 'ArrowLeft') {
+    lightboxNavigate('prev');
+  }
+});
+
 
 particlesJS("particles-js", {
     "particles": {
