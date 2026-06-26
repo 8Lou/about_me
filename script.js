@@ -1,5 +1,5 @@
 gsap.to("h1", {
-    text: "FRONTEND DEVELOPER",
+    text: "FRONTEND DEVELOPER & UI/UX-DESIGNER",
     duration: 3,
     repeat: 3,
     repeatDelay: .7,
@@ -9,6 +9,63 @@ gsap.to("h1", {
 });
 
 AOS.init();
+
+// Галерея-слайдер для проектов
+function initGallery(sliderId) {
+  const slider = document.getElementById(sliderId);
+  if (!slider) return;
+
+  const track = slider.querySelector('.gallery-track');
+  const slides = track.querySelectorAll('.gallery-slide');
+  const prevBtn = slider.querySelector('.gallery-prev');
+  const nextBtn = slider.querySelector('.gallery-next');
+  const dotsContainer = slider.querySelector('.gallery-dots');
+
+  let currentIndex = 0;
+
+  // Создаём точки
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('span');
+
+  function goToSlide(index) {
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const next = (currentIndex + 1) % slides.length;
+    goToSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentIndex - 1 + slides.length) % slides.length;
+    goToSlide(prev);
+  }
+
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Клавиатурная навигация
+  slider.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+  slider.setAttribute('tabindex', '0');
+}
+
+// Инициализация всех галерей
+initGallery('gallery-weproperty');
+initGallery('gallery-10x');
+initGallery('gallery-monarch');
 
 particlesJS("particles-js", {
     "particles": {
